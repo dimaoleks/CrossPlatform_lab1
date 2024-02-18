@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First lab</title>
+</head>
+<body>
+
+<h1>Car list</h1>
+
+<div style="margin-left: 2em">
+    <ul>
+        <li th:each="carName : ${cars}">
+            <span th:text="${carName}"></span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
