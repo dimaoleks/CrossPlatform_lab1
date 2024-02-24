@@ -5,16 +5,90 @@
     <meta charset="UTF-8">
     <title>First lab</title>
 </head>
-<body>
+<body style="margin-left: 2em; min-font-size: 45px">
 
-<h1>Car list</h1>
+<h3 th:text="#{userName}"></h3>
 
-<div style="margin-left: 2em">
+<div th:text="${progLanguages.Java}"></div>
+
+<div th:text="${progLanguages['CSharp']}"></div>
+
+<h3>Single Car</h3>
+<h5 style="margin: auto 0 0 0">The best car ever seen</h5>
+<div th:text="${carObjects[0].name}"></div>
+
+<h3>Car list</h3>
+
+<div style="margin-left: 1em">
     <ul>
         <li th:each="carName : ${cars}">
             <span th:text="${carName}"></span>
         </li>
     </ul>
 </div>
+
+<div>
+    <p>Brand: <span th:text="${car.name}"></span></p>
+    <p>Price: <span th:text="${car.price}">$</span></p>
+    <p>Fuel type: <span th:text="${car.fuelType}"></span></p>
+</div>
+
+<div th:object="${car}">
+    <p>Brand: <span th:text="*{name}"></span></p>
+    <p>Price: <span th:text="*{price}">$</span></p>
+    <p>Fuel type: <span th:text="*{fuelType}"></span></p>
+</div>
+
+<div>
+    <a th:href="@{https://www.google.com/search?q=Audi+RS+8+2023}">Absolute Url</a>
+</div>
+
+<div>
+    <a th:href="@{/simple}">Relative Url</a>
+</div>
+
+<div>
+    <a th:href="@{https://www.google.com/search(q=${searchTerm})}">Search term</a>
+</div>
+
+<div>
+    <div th:id="'container-' + ${car.name}"></div>
+</div>
+
+<div>
+    <div th:id="|container-${index}|"></div>
+</div>
+
+<div>
+    <span>The total price is [[${index}]]</span>
+</div>
+
+<div>
+    <span>The total price is <span th:text="${index}"></span></span>
+</div>
+
+<div th:text="${userName}">Bob</div>
+
+<div th:id="|container-${index}|"></div>
+
+<div th:if="${index > 4}">You are famous</div>
+
+<div th:unless="${followersCount > 0}">You have no followers currently.</div>
+
+
+<div th:if="${followersCount > 0}">
+    You have <span th:text="${followersCount}"></span> followers currently.
+</div>
+<div th:unless="${followersCount > 0}">You have no followers currently.</div>
+
+<div>
+    <ul>
+        <li th:each="language : ${progLanguages}" th:text="${language.key}"></li>
+    </ul>
+</div>
+
+<h1 th:text="#{__${userName}__}"></h1>
+
+
 </body>
 </html>
